@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+The value of b is: <span id="b_id">0</span>
+
+<script src="http://cdnjs.cloudflare.com/ajax/libs/rxjs/2.2.26/rx.js"></script>
+<script>
+var a = Rx.Observable.create(function(observer) {
+    setInterval(function() {
+        var curA = Math.floor((Math.random() * 100) + 1);
+        console.log("Current value of a " + curA);
+        observer.onNext(curA);
+    }, 3000);
+});
+var b = 0;
+a.subscribe(function(val) {
+    b=val+1;
+    document.getElementById("b_id").innerHTML=b;
+});
+</script>
+</body>
+</html> 
